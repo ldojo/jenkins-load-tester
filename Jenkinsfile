@@ -20,21 +20,23 @@ pipeline {
       }
     }
     stage ('publish-report'){
-      script{
-        def reportDir = sh (
-          script: 'find target/gatling  -maxdepth 1 -mindepth 1 -type d',
-          returnStdout: true
-        ).trim()
-        archiveArtifacts artifacts: "${reportDir}/", fingerprint: true
-        publishHTML (target: [
-          allowMissing: false,
-          alwaysLinkToLastBuild: false,
-          keepAll: true,
-          reportDir: "${reportDir}",
-          reportFiles: 'index.html',
-          reportName: "Gatling Report"
-        ])
-        echo 'You can view the Gatling HTML report for this build. It is named "Gatling Report". The HTML files for the report are also saved as an artifact of this build.'
+      steps {
+        script{
+          def reportDir = sh (
+            script: 'find target/gatling  -maxdepth 1 -mindepth 1 -type d',
+            returnStdout: true
+          ).trim()
+          archiveArtifacts artifacts: "${reportDir}/", fingerprint: true
+          publishHTML (target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: "${reportDir}",
+            reportFiles: 'index.html',
+            reportName: "Gatling Report"
+          ])
+          echo 'You can view the Gatling HTML report for this build. It is named "Gatling Report". The HTML files for the report are also saved as an artifact of this build.'
+        }
       }
     }
   }
