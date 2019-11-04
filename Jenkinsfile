@@ -6,7 +6,7 @@ pipeline {
   }
 
   parameters {
-    string(defaultValue: 20, description: 'time in minutes for the timeout of this jenkins job', name: 'timeout')
+    string(defaultValue: "20", description: 'time in minutes for the timeout of this jenkins job', name: 'timeout')
   }
 
   options {
