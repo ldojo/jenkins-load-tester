@@ -6,7 +6,9 @@ pipeline {
   }
 
   parameters {
-    string(defaultValue: "20", description: 'time in minutes for the timeout of this jenkins job', name: 'timeout')
+    string(name: 'timeout', defaultValue: "20", description: 'time in minutes for the timeout of this jenkins job' )
+    string(name: 'numberOfUsers', defaultValue: "10", description: 'number of users to simulate')
+    string(name: 'urlTarget', defaultValue: "http://computer-database.gatling.io", description: 'the target URL to load test')
   }
 
   options {
@@ -16,7 +18,7 @@ pipeline {
   stages {
     stage ('load-test'){
       steps {
-          sh 'mvn -B gatling:test'
+          sh "mvn -B -DnumberOfUsers=${params.numberOfUsers} -DurlTarget=${params.urlTarget} gatling:test"
       }
     }
     stage ('publish-report'){
