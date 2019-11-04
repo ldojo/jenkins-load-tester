@@ -3,15 +3,15 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.gatling</groupId>
-  <artifactId>gatling-maven-plugin-demo</artifactId>
-  <version>3.2.1</version>
+  <groupId>com.citigroup</groupId>
+  <artifactId>gatling-load-tester</artifactId>
+  <version>1.0.0</version>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gatling.version>${project.version}</gatling.version>
+    <gatling.version>3.2.1</gatling.version>
     <gatling-plugin.version>3.0.3</gatling-plugin.version>
     <scala-maven-plugin.version>4.1.1</scala-maven-plugin.version>
   </properties>
@@ -60,6 +60,9 @@
         <version>${gatling-plugin.version}</version>
         <configuration>
             <!--noReports>true</noReports-->
+            <jvmArgs>
+              <jvmArg>-DnumberOfUsers=${numberOfUsers}</jvmArg>
+            </jvmArgs>
         </configuration>
       </plugin>
     </plugins>
