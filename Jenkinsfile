@@ -26,7 +26,7 @@ pipeline {
         script{
           try{
             gatlingArchive()
-          } catch {
+          } catch (all){
             def reportDir = sh (
               script: 'find target/gatling  -maxdepth 1 -mindepth 1 -type d',
               returnStdout: true
