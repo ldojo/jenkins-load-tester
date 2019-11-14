@@ -21,17 +21,6 @@ pipeline {
 }
 
 pipeline {
-  agent {
-    node {
-      label 'maven'
-    }
-  }
-
-
-  options {
-    timeout(time: 20, unit: 'MINUTES')
-  }
-
   stages {
     stage ('load-test2'){
       steps {
