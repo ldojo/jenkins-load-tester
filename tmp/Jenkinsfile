@@ -7,7 +7,7 @@ pipeline {
 
 
   options {
-    timeout(time: "${params.timeout}", unit: 'MINUTES')
+    timeout(time: "20", unit: 'MINUTES')
   }
 
   stages {
@@ -16,6 +16,6 @@ pipeline {
           sh 'sleep 20; echo "test complete"'
       }
     }
-    
+
   }
 }
