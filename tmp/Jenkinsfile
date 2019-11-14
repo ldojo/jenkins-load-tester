@@ -1,0 +1,21 @@
+pipeline {
+  agent {
+    node {
+      label 'maven'
+    }
+  }
+
+
+  options {
+    timeout(time: "${params.timeout}", unit: 'MINUTES')
+  }
+
+  stages {
+    stage ('load-test'){
+      steps {
+          sh 'sleep 20; echo "test complete"'
+      }
+    }
+    
+  }
+}
